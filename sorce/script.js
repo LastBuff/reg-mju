@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("prev").addEventListener("click", () => {
     index = (index - 1 + total) % total;
     updateSlide();
+
   });
 
 });
