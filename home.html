@@ -6,24 +6,46 @@
   <title>MJU</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: 'Kanit', sans-serif; }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+ 
 </head>
 <body class="bg-gray-50 text-gray-800">
 
   <!-- Header -->
-  <header class="bg-blue-700 text-white shadow-md">
-    <div class="container mx-auto flex items-center justify-between py-4 px-6">
-      <h1 class="text-2xl font-bold">เว็บไซต์มหาวิทยาลัย</h1>
-      <nav class="space-x-4">
-        <a href="#home" class="hover:underline">หน้าแรก</a>
-        <a href="#schedule" class="hover:underline">ตารางเรียน</a>
-        <a href="#rooms" class="hover:underline">ตารางการใช้ห้อง</a>
-        <a href="#calendar" class="hover:underline">ปฏิทินการศึกษา</a>
-      </nav>
+<header class="bg-whiat-700 text-black shadow-md">
+  <div class="container mx-auto flex items-center justify-between py-4 px-6">
+    <!-- เปลี่ยนจากข้อความเป็นโลโก้รูปภาพ -->
+    <a href="#home" class="flex items-center space-x-2" >
+      <img src="/img/MJU_LOGO.svg.png" alt="MJU Logo" class="h-20 z-20 w-auto mr-3">
+        <div class="flex items-center">
+  <!-- ข้อความด้านซ้าย -->
+  <div class="pr-4">
+    <span class="text-2xl font-normal">มหาวิทยาลัยแม่โจ้</span><br>
+    <span class="block text-xl font-normal">MAEJO UNIVERSITY</span>
+  </div>
+  
+  <!-- เส้นแบ่งหนา และเว้นระยะ -->
+  <div class="border-l-4 border-whiat-700 h-16 mx-2"></div>
+  
+  <!-- ข้อความ MJU -->
+  <span class="text-5xl font-normal"><img src="/img/MJU university.png" alt="" class=" h-20 z-20 w-auto mr-3"></span>
+</div>
+
+
+    </a>
+  </div>
+</header>
+<div class="bg-green-700">
+    <div class="container mx-auto flex space-x-20 px-6 py-2 flex justify-center ">
+      <a href="#home" class="text-white px-4 py-1 hover:bg-green-800 rounded">หน้าแรก</a>
+      <a href="#schedule" class="text-white px-4 py-1 hover:bg-green-800 rounded">ตารางเรียน</a>
+      <a href="#rooms" class="text-white px-4 py-1 hover:bg-green-800 rounded">ตารางการใช้ห้อง</a>
+      <a href="#calendar" class="text-white px-4 py-1 hover:bg-green-800 rounded">ปฏิทินการศึกษา</a>
+      <a href="index.html" class="text-white px-4 py-1 hover:bg-green-800 rounded">เข้าสู่ระบบ</a>
     </div>
-  </header>
+  </div>
+ 
+
 
   <!-- Hero Section -->
   <section id="home" class="bg-white py-20">

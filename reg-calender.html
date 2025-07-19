@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>reg.mju</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- ใช้ฟอนต์ K2D -->
+  <link href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply font-k2d;
+      }
+    }
+    @layer utilities {
+      .font-k2d {
+        font-family: 'K2D', sans-serif;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuToggle = document.getElementById('menuToggle');
+        const menuContent = document.getElementById('menuContent');
+
+        if(menuToggle && menuContent) {
+            menuToggle.addEventListener('click', function () {
+                menuContent.classList.toggle('hidden');
+            });
+        }
+    });
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="MJU university.png" />
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-k2d tracking-wider">
+
+    <header class="bg-gray-50 text-green-700 py-2 shadow">
+      <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1200px-MJU_LOGO.svg.png"
+            alt="MJU Logo" class="w-24 h-auto">
+          <div class="flex flex-col pr-2 border-r-2 border-gray-300">
+            <span class="text-lg md:text-xl font-medium leading-snug">
+              ระบบลงทะเบียน
+            </span>
+            <span class="text-lg md:text-xl font-medium leading-snug">
+              มหาวิทยาลัยแม่โจ้
+            </span>
+          </div>
+          <img src="/img/MJU university.png" alt="รูปหลังเส้น" class="w-24 h-auto rounded-md">
+        </div>
+
+        <!-- ปุ่ม Logout เดสก์ท็อป -->
+        <div class="hidden md:block">
+          <a href="index.html"
+            class="bg-green-700 hover:bg-red-600 text-white font-medium py-2 px-4 rounded transition duration-300 ease-in-out">
+            Logout
+          </a>
+        </div>
+      </div>
+    </header>
+
+  <!-- Navigation Bar -->
+    <nav class="bg-green-700 border-b relative">
+      <div class="max-w-6xl mx-auto px-4 py-3">
+
+        <!-- ปุ่ม toggle menu (มือถือ) -->
+        <div class="flex justify-end md:hidden">
+          <button id="menuToggle" class="text-gray-100 focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- เมนู -->
+        <div id="menuContent"
+          class="hidden md:flex md:flex-row md:justify-end gap-4 mt-4 md:mt-0 text-gray-100 font-medium text-left
+          absolute top-full right-4 z-50 bg-green-700 shadow-lg rounded-md w-48 p-3
+          md:static md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:p-0">
+          <a href="home.html" class="block md:inline hover:underline py-1">หน้าแรก</a>
+          <a href="StudentTimeTable.html" class="block md:inline hover:underline py-1">ตารางเรียน</a>
+          <a href="ตารางใช้ห้อง.html" class="block md:inline hover:underline py-1">ตารางการใช้ห้อง</a>
+          <a href="reg-calender.html" class="block md:inline hover:underline py-1">ปฏิทินการศึกษา</a>
+
+          <!-- ปุ่ม Logout มือถือ -->
+          <a href="index.html"
+            class="block md:hidden bg-white text-green-700 font-medium py-2 px-4 rounded text-center mt-2 transition duration-300 ease-in-out hover:bg-red-600 hover:text-white">
+            Logout
+          </a>
+        </div>
+
+      </div>
+    </nav>
+
+  <div class="max-w-6xl mx-auto mt-6 px-2">
+    <h1 class="text-2xl md:text-3xl font-bold text-center text-green-700 mb-4">
+      ปฏิทินการศึกษา มหาวิทยาลัยแม่โจ้
+    </h1>
+
+    <!-- ชุดปฏิทิน -->
+    <div class="flex flex-col md:flex-row md:items-center justify-center gap-2 mb-6">
+      <label class="text-sm font-medium">ชุดปฏิทินการศึกษา:</label>
+      <select id="calendarSet" class="border border-gray-300 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400">
+        <option value="1000">1000 : วิทยาลัยบริหารศาสตร์</option>
+        <option value="1001">1001 : ปริญญาตรี ปกติ</option>
+        <option value="1002">1002 : ปริญญาตรี สมทบ</option>
+        <option value="1003">1003 : ปริญญาตรี ภาคปกติ วิทยาเขตฯ</option>
+        <option value="1006">1006 : นักศึกษาทดลองเรียนบัณฑิตศึกษา</option>
+        <option value="2001">2001 : บัณฑิตศึกษา ปกติ</option>
+        <option value="2002">2002 : บัณฑิตศึกษา สมทบ</option>
+        <option value="3001">3001 : ปริญญาเอก ปกติ</option>
+        <option value="3002">3002 : ปริญญาเอก สมทบ</option>
+        <option value="7001">7001 : แม่โจ้ - ชุมพร</option>
+        <option value="8001">8001 : แม่โจ้ - แพร่</option>
+        <option value="9999">9999 : TEST</option>
+      </select>
+    </div>
+
+    <div class="bg-white shadow rounded-lg p-4 md:p-6">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-3 gap-4">
+        <h2 class="text-lg md:text-xl font-semibold text-green-600">ปฏิทินการศึกษา</h2>
+
+        <div class="flex flex-col md:flex-row md:gap-4 gap-2">
+          <div>
+            <label class="text-xs text-gray-600">ปีการศึกษา</label>
+            <select id="academicYear" class="border border-gray-300 rounded-lg px-2 py-1 text-xs shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 w-full md:w-auto">
+              <option value="2568">2568</option>
+              <option value="2569">2569</option>
+              <option value="2570">2570</option>
+              <option value="2571">2571</option>
+              <option value="2572">2572</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-xs text-gray-600">ภาคเรียนที่</label>
+            <select id="semester" class="border border-gray-300 rounded-lg px-2 py-1 text-xs shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 w-full md:w-auto">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-300 text-xs md:text-sm">
+          <thead>
+            <tr class="bg-green-200 text-green-800">
+              <th class="border border-gray-300 px-2 md:px-3 py-1 md:py-2 text-left">รายการ</th>
+              <th class="border border-gray-300 px-2 md:px-3 py-1 md:py-2 text-center">วันที่เริ่มต้น</th>
+              <th class="border border-gray-300 px-2 md:px-3 py-1 md:py-2 text-center">วันที่สิ้นสุด</th>
+            </tr>
+          </thead>
+          <tbody id="calendarBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Calender -->
+  <script>
+  const mainCalendarData = {
+      "2568": {
+        //ภาคเรียนที่ 1
+        "1": [ 
+          { item: "ลงทะเบียนปกติ (on-line)", start: "17 มิ.ย. 2568", startTime: "00:01", end: "20 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปี 1 (ตามรหัสปีเข้า)", start: "18 มิ.ย. 2568", startTime: "00:01", end: "18 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปี 2 (ตามรหัสปีเข้า)", start: "19 มิ.ย. 2568", startTime: "08:30", end: "19 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปี 3 (ตามรหัสปีเข้า)", start: "20 มิ.ย. 2568", startTime: "08:30", end: "20 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปี 4 (ตามรหัสปีเข้า)", start: "20 มิ.ย. 2568", startTime: "08:30", end: "20 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปีอื่นๆ", start: "20 มิ.ย. 2568", startTime: "08:30", end: "20 มิ.ย. 2568", endTime: "23:59" },
+
+          { item: "วันเปิดภาคการศึกษา", start: "23 มิ.ย. 2568", startTime: "08:00", end: "23 มิ.ย. 2568", endTime: "08:00" },
+
+          { item: "ลงทะเบียนเพิ่ม/ลด/เปลี่ยนกลุ่ม (on-line)", start: "23 มิ.ย. 2568", startTime: "08:30", end: "25 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ช่วงวันทำการเพิ่มรายวิชา", start: "23 มิ.ย. 2568", startTime: "08:30", end: "25 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ช่วงวันทำการลดรายวิชา", start: "23 มิ.ย. 2568", startTime: "08:30", end: "25 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ช่วงวันทำการเปลี่ยนกลุ่มรายวิชา", start: "23 มิ.ย. 2568", startTime: "08:30", end: "25 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ช่วงลดรายวิชาโดยได้รับค่าหน่วยกิตคืนเต็ม", start: "12 มิ.ย. 2568", startTime: "08:30", end: "25 มิ.ย. 2568", endTime: "23:59" },
+
+          { item: "ลงทะเบียนล่าช้า", start: "23 มิ.ย. 2568", startTime: "08:30", end: "25 มิ.ย. 2568", endTime: "23:59" },
+          { item: "- ช่วงการขอเทียบโอนหน่วยกิตนักศึกษาใหม่", start: "17 มิ.ย. 2568", startTime: "08:30", end: "25 มิ.ย. 2568", endTime: "16:30" },
+
+          { item: "งวดชำระเงินตามปกติ", start: "30 มิ.ย. 2568", startTime: "08:30", end: "6 ก.ค. 2568", endTime: "20:00" },
+          { item: "- ชำระเงินที่เคาน์เตอร์ธนาคารกรุงไทยทุกสาขาทั่วประเทศ", start: "30 มิ.ย. 2568", startTime: "08:30", end: "6 ก.ค. 2568", endTime: "20:00" },
+
+          { item: "ช่วงพิมพ์ใบแจ้งหนี้ผ่าน WEB", start: "30 มิ.ย. 2568", startTime: "08:30", end: "6 ก.ค. 2568", endTime: "20:00" },
+          { item: "- วันแจ้งคาดว่าจะสำเร็จการศึกษาผ่านระบบออนไลน์", start: "14 ก.ค. 2568", startTime: "08:30", end: "14 ต.ค. 2568", endTime: "16:30" },
+
+          { item: "ช่วงของการรักษาสภาพนักศึกษา/ลาพักการศึกษา", start: "23 มิ.ย. 2568", startTime: "08:30", end: "23 ก.ค. 2568", endTime: "16:30" },
+          { item: "- วันสุดท้ายของการขอแก้ไขผลการศึกษา I", start: "23 ก.ค. 2568", startTime: "16:30", end: "23 ก.ค. 2568", endTime: "16:30" },
+
+          { item: "ช่วงวันสอบกลางภาค", start: "18 ส.ค. 2568", startTime: "08:30", end: "24 ส.ค. 2568", endTime: "16:30" },
+          { item: "- ช่วงวันทำการถอนรายวิชา (ติด W)", start: "7 ก.ค. 2568", startTime: "08:30", end: "9 ก.ย. 2568", endTime: "16:30" },
+
+          { item: "วันสุดท้ายของการเรียนการสอน", start: "12 ต.ค. 2568", startTime: "08:00", end: "12 ต.ค. 2568", endTime: "16:30" },
+
+          { item: "ช่วงวันสอบปลายภาค", start: "14 ต.ค. 2568", startTime: "08:30", end: "27 ต.ค. 2568", endTime: "16:30" },
+
+          { item: "วันปิดภาคการศึกษา", start: "28 ต.ค. 2568", startTime: "08:30", end: "28 ต.ค. 2568", endTime: "16:30" },
+          { item: "- วันสุดท้ายของการส่งผลการศึกษา", start: "6 พ.ย. 2568", startTime: "08:30", end: "6 พ.ย. 2568", endTime: "16:30" },
+          { item: "- วันประกาศผลการศึกษา", start: "7 พ.ย. 2568", startTime: "16:30", end: "7 พ.ย. 2568", endTime: "23:30" },
+
+          { item: "วันไหว้ครู", start: "24 ก.ค. 2568", startTime: "08:00", end: "24 ก.ค. 2568", endTime: "16:30" }
+        ],
+
+        //ภาคเรียนที่ 2
+        "2": [
+          { item: "ลงทะเบียนปกติ (on-line)", start: "11 พ.ย. 2568", startTime: "0:01", end: "14 พ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปี 1 (ตามรหัสปีเข้า)", start: "12 พ.ย. 2568", startTime: "8:30", end: "12 พ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปี 2 (ตามรหัสปีเข้า)", start: "13 พ.ย. 2568", startTime: "8:30", end: "13 พ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปี 3 (ตามรหัสปีเข้า)", start: "14 พ.ย. 2568", startTime: "8:30", end: "14 พ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปี 4 (ตามรหัสปีเข้า)", start: "14 พ.ย. 2568", startTime: "8:30", end: "14 พ.ย. 2568", endTime: "23:59" },
+          { item: "- ชั้นปีอื่นๆ", start: "14 พ.ย. 2568", startTime: "8:30", end: "14 พ.ย. 2568", endTime: "23:59" },
+          { item: "ลงทะเบียนเพิ่ม/ลด/เปลี่ยนกลุ่ม (on-line)", start: "17 พ.ย. 2568", startTime: "8:30", end: "19 พ.ย. 2568", endTime: "23:59" },
+          { item: "- ช่วงวันทำการเพิ่มรายวิชา", start: "17 พ.ย. 2568", startTime: "8:30", end: "19 พ.ย. 2568", endTime: "23:59" },
+          { item: "- ช่วงวันทำการลดรายวิชา", start: "17 พ.ย. 2568", startTime: "8:30", end: "19 พ.ย. 2568", endTime: "23:59" },
+          { item: "- ช่วงวันทำการเปลี่ยนกลุ่มรายวิชา", start: "17 พ.ย. 2568", startTime: "8:30", end: "19 พ.ย. 2568", endTime: "23:59" },
+          { item: "- ช่วงลดรายวิชาโดยได้รับค่าหน่วยกิตคืนเต็ม", start: "17 พ.ย. 2568", startTime: "8:30", end: "19 พ.ย. 2568", endTime: "23:59" },
+          { item: "วันเปิดภาคการศึกษา", start: "17 พ.ย. 2568", startTime: "8:30", end: "17 พ.ย. 2568", endTime: "16:30" },
+          { item: "ลงทะเบียนล่าช้า", start: "17 พ.ย. 2568", startTime: "8:30", end: "19 พ.ย. 2568", endTime: "23:59" },
+          { item: "งวดชำระเงินตามปกติ", start: "24 พ.ย. 2568", startTime: "8:30", end: "30 พ.ย. 2568", endTime: "23:30" },
+          { item: "ช่วงพิมพ์ใบแจ้งหนี้ผ่าน WEB", start: "24 พ.ย. 2568", startTime: "8:30", end: "30 พ.ย. 2568", endTime: "23:30" },
+          { item: "- ชำระเงินที่เคาน์เตอร์ธนาคารกรุงไทยทุกสาขาทั่วประเทศ", start: "24 พ.ย. 2568", startTime: "8:30", end: "30 พ.ย. 2568", endTime: "23:30" },
+          { item: "- วันแจ้งคาดว่าจะสำเร็จการศึกษาผ่านระบบออนไลน์", start: "8 ธ.ค. 2568", startTime: "8:30", end: "9 มี.ค. 2569", endTime: "16:30" },
+          { item: "ช่วงของการรักษาสภาพนักศึกษา/ลาพักการศึกษา", start: "17 พ.ย. 2568", startTime: "8:30", end: "18 ธ.ค. 2568", endTime: "16:30" },
+          { item: "- วันสุดท้ายของการขอแก้ไขผลการศึกษา I", start: "18 ธ.ค. 2568", startTime: "8:30", end: "18 ธ.ค. 2568", endTime: "16:30" },
+          { item: "ช่วงวันสอบกลางภาค", start: "26 ม.ค. 2569", startTime: "8:30", end: "1 ก.พ. 2569", endTime: "16:30" },
+          { item: "ช่วงวันทำการถอนรายวิชา ( ติด W )", start: "1 ธ.ค. 2568", startTime: "8:30", end: "10 ก.พ. 2569", endTime: "16:30" },
+          { item: "วันสุดท้ายของการเรียนการสอน", start: "8 มี.ค. 2569", startTime: "8:30", end: "8 มี.ค. 2569", endTime: "16:30" },
+          { item: "ช่วงวันสอบปลายภาค", start: "9 มี.ค. 2569", startTime: "8:00", end: "22 มี.ค. 2569", endTime: "16:30" },
+          { item: "วันปิดภาคการศึกษา", start: "23 มี.ค. 2569", startTime: "8:30", end: "23 มี.ค. 2569", endTime: "16:30" },
+          { item: "- วันสุดท้ายของการส่งผลการศึกษา", start: "30 มี.ค. 2569", startTime: "8:00", end: "30 มี.ค. 2569", endTime: "16:30" },
+          { item: "- วันประกาศผลการศึกษา", start: "31 มี.ค. 2569", startTime: "16:30", end: "31 มี.ค. 2569", endTime: "23:30" }
+          ],
+
+          //ภาคเรียนที่ 3
+          "3": [
+          { item: "ลงทะเบียนปกติ (on-line)", start: "7 เม.ย. 2569", startTime: "8:30", end: "7 เม.ย. 2569", endTime: "23:59" },
+          { item: "- ชั้นปี 1 (ตามรหัสปีเข้า)", start: "17 เม.ย. 2569", startTime: "8:30", end: "17 เม.ย. 2569", endTime: "23:59" },
+          { item: "- ชั้นปี 2 (ตามรหัสปีเข้า)", start: "17 เม.ย. 2569", startTime: "8:30", end: "17 เม.ย. 2569", endTime: "23:59" },
+          { item: "- ชั้นปี 3 (ตามรหัสปีเข้า)", start: "17 เม.ย. 2569", startTime: "8:30", end: "17 เม.ย. 2569", endTime: "23:59" },
+          { item: "- ชั้นปี 4 (ตามรหัสปีเข้า)", start: "17 เม.ย. 2569", startTime: "8:30", end: "17 เม.ย. 2569", endTime: "23:59" },
+          { item: "- ชั้นปีอื่นๆ", start: "17 เม.ย. 2569", startTime: "8:30", end: "17 เม.ย. 2569", endTime: "23:59" },
+          { item: "วันเปิดภาคการศึกษา", start: "20 เม.ย. 2569", startTime: "8:00", end: "20 เม.ย. 2569", endTime: "8:00" },
+          { item: "ลงทะเบียนเพิ่ม/ลด/เปลี่ยนกลุ่ม (on-line)", start: "20 เม.ย. 2569", startTime: "8:30", end: "22 เม.ย. 2569", endTime: "23:59" },
+          { item: "- ช่วงวันทำการเพิ่มรายวิชา", start: "20 เม.ย. 2569", startTime: "8:30", end: "22 เม.ย. 2569", endTime: "23:59" },
+          { item: "- ช่วงวันทำการลดรายวิชา", start: "20 เม.ย. 2569", startTime: "8:30", end: "22 เม.ย. 2569", endTime: "23:59" },
+          { item: "- ช่วงวันทำการเปลี่ยนกลุ่มรายวิชา", start: "20 เม.ย. 2569", startTime: "8:30", end: "22 เม.ย. 2569", endTime: "23:59" },
+          { item: "- ช่วงลดรายวิชาโดยได้รับค่าหน่วยกิตคืนเต็ม", start: "17 เม.ย. 2569", startTime: "8:30", end: "22 เม.ย. 2569", endTime: "23:59" },
+          { item: "ลงทะเบียนล่าช้า", start: "20 เม.ย. 2569", startTime: "8:30", end: "22 เม.ย. 2569", endTime: "23:59" },
+          { item: "งวดชำระเงินตามปกติ", start: "27 เม.ย. 2569", startTime: "8:30", end: "3 พ.ค. 2569", endTime: "23:30" },
+          { item: "ช่วงพิมพ์ใบแจ้งหนี้ผ่าน WEB", start: "27 เม.ย. 2569", startTime: "8:30", end: "3 พ.ค. 2569", endTime: "23:30" },
+          { item: "- ชำระเงินที่เคาน์เตอร์ธนาคารกรุงไทยทุกสาขาทั่วประเทศ", start: "27 เม.ย. 2569", startTime: "8:30", end: "3 พ.ค. 2569", endTime: "23:30" },
+          { item: "- วันแจ้งคาดว่าจะสำเร็จการศึกษาผ่านระบบออนไลน์", start: "11 พ.ค. 2569", startTime: "8:30", end: "8 มิ.ย. 2569", endTime: "16:30" },
+          { item: "วันสุดท้ายของการเรียนการสอน", start: "7 มิ.ย. 2569", startTime: "8:00", end: "7 มิ.ย. 2569", endTime: "16:30" },
+          { item: "ช่วงวันสอบปลายภาค", start: "8 มิ.ย. 2569", startTime: "8:00", end: "14 มิ.ย. 2569", endTime: "16:30" },
+          { item: "วันปิดภาคการศึกษา", start: "15 มิ.ย. 2569", startTime: "8:30", end: "15 มิ.ย. 2569", endTime: "16:30" },
+          { item: "- วันสุดท้ายของการส่งผลการศึกษา", start: "22 มิ.ย. 2569", startTime: "8:00", end: "22 มิ.ย. 2569", endTime: "16:30" },
+          { item: "- วันประกาศผลการศึกษา", start: "23 มิ.ย. 2569", startTime: "16:30", end: "23 มิ.ย. 2569", endTime: "16:30" }
+          ]
+      }
+
+    }
+
+  /* mapping ให้ชุดปฏิทินอื่นๆ อ้างอิงข้อมูลชุดหลัก */
+  const calendarReferenceMap = {
+    "1000": "1000", 
+    "1001": "1000", 
+    "1002": "1000", 
+    "1003": "1000", 
+    "1006": "1000", 
+    "2001": "1000", 
+    "2002": "1000", 
+    "3001": "1000", 
+    "3002": "1000", 
+    "7001": "1000", 
+    "8001": "1000", 
+    "9999": "1000", 
+  };
+
+  /* calendarData เก็บข้อมูลชุดหลักเท่านั้น */
+  const calendarData = {
+    "1000": mainCalendarData
+  };
+
+  function getReferencedCalendarSet(selectedSet) {
+    return calendarReferenceMap[selectedSet] || selectedSet;
+  }
+
+  /* renderTable ฟังก์ชันสำหรับแสดงตารางปฏิทิน */
+  function renderTable() {
+    const set = document.getElementById('calendarSet').value;
+    const year = document.getElementById('academicYear').value;
+    const sem = document.getElementById('semester').value;
+    const body = document.getElementById('calendarBody');
+    body.innerHTML = '';
+
+    const refSet = getReferencedCalendarSet(set);
+    const dataForSet = calendarData[refSet];
+    const rows = dataForSet?.[year]?.[sem] || [];
+
+    /* ตรวจสอบว่ามีข้อมูลหรือไม่ */
+    if (rows.length === 0) {
+      body.innerHTML = `
+        <tr>
+          <td colspan="3" class="border border-gray-300 px-2 py-2 text-center text-red-500">
+            ไม่พบข้อมูลที่เลือก
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    /* แสดงสีในตาราง */
+    rows.forEach(event => {
+      let color = '';
+      if (!event.item.startsWith('-') && event.item.includes('ภาคการศึกษา')) {
+        color = 'bg-gray-200';
+      } else if (!event.item.startsWith('-')) {
+        color = 'bg-green-50';
+      }
+      body.innerHTML += `
+        <tr class="${color}">
+          <td class="border border-gray-300 px-2 md:px-3 py-1 md:py-2">${event.item}</td>
+          <td class="border border-gray-300 px-2 md:px-3 py-1 md:py-2 text-center">
+            ${event.start}<br>
+
+            <span class="text-blue-600 text-xs flex items-center justify-center"> 
+              <i data-lucide="clock" class="w-4 h-4 mr-1"></i>${event.startTime} น.
+            </span>
+          </td>
+
+          <td class="border border-gray-300 px-2 md:px-3 py-1 md:py-2 text-center">
+            ${event.end}<br>
+            <span class="text-blue-600 text-xs flex items-center justify-center">
+              <i data-lucide="clock" class="w-4 h-4 mr-1"></i>${event.endTime} น.
+            </span>
+          </td>
+
+        </tr>`;
+    });
+    lucide.createIcons();
+  }
+
+  document.querySelectorAll('#calendarSet, #academicYear, #semester').forEach(el => {
+    el.addEventListener('change', renderTable);
+  });
+
+  renderTable();
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-green-700 text-white text-center py-5">
+    <p class="text-gray-100 text-sm sm:text-base">
+      © 2025 มหาวิทยาลัยแม่โจ้. สงวนลิขสิทธิ์.
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+
+    body { margin: 0; font-family: sans-serif; }
+
+    /* header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f1f1f1;
+      padding: 10px 20px;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    /* กรอบค้นหา */
+    .search-container {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+      margin-left: 20px;
+    }
+    .search-container input[type="search"] {
+      width: 100%;
+      padding: 8px 40px 8px 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-container input[type="search"]:focus {
+      border-color: #007BFF;
+    }
+    .search-container .fa-magnifying-glass {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+    }
+
+    /* เมนูลิงก์เพิ่มเติมถ้ามี */
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    /* ปรับ layout สำหรับมือถือ */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-container {
+        margin: 10px 0;
+        max-width: none;
+      }
+    }

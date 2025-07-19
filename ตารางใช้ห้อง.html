@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ตารางการใช้ห้องเรียน - ม.แม่โจ้</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    .hamburger {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 2rem;
+      height: 2rem;
+      background: transparent;
+      border: none;
+      padding: 0;
+      z-index: 10;
+    }
+    .hamburger div {
+      width: 2rem;
+      height: 0.25rem;
+      background: white;
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px;
+    }
+    .hamburger.open .line1 {
+      transform: rotate(45deg);
+    }
+    .hamburger.open .line2 {
+      opacity: 0;
+    }
+    .hamburger.open .line3 {
+      transform: rotate(-45deg);
+    }
+    @media (max-width: 639px) {
+      .menu-items {
+        position: absolute;
+        top: 4rem;
+        right: 0;
+        width: 100%;
+        background-color: #166534;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        padding: 0.5rem 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      .menu-items.open {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100 text-sm">
+
+  <div class="bg-green-700 h-16 w-full flex items-center justify-center p-4">
+    <div class="flex items-center space-x-2">
+      <img src="/img/MJU_LOGO.svg.png" alt="Maejo University Logo" class="h-10 w-auto">
+      <div class="text-white text-lg font-bold flex items-center">
+        <span class="mr-2">ระบบลงทะเบียน</span>
+        <span>มหาวิทยาลัยแม่โจ้</span>
+      </div>
+    </div>
+    <img src="/img/MJU university.png" alt="MJU Logo" class="h-10 w-auto ml-auto hidden sm:block">
+  </div>
+
+  <nav class="bg-green-600 p-4 relative shadow-md">
+    <div class="container mx-auto flex justify-end items-center">
+      <button class="hamburger sm:hidden" id="menuButton">
+        <div class="line1 bg-white"></div>
+        <div class="line2 bg-white"></div>
+        <div class="line3 bg-white"></div>
+      </button>
+
+      <ul id="menuItems" class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 text-white menu-items">
+        <li><a href="home.html" class="block p-2 hover:bg-green-700 rounded">หน้าแรก</a></li>
+        <li><a href="StudentTimeTable.html" class="block p-2 hover:bg-green-700 rounded">ตารางเรียน</a></li>
+        <li><a href="ตารางใช้ห้อง.html" class="block p-2 hover:bg-green-700 rounded">ตารางการใช้ห้อง</a></li>
+        <li><a href="index.html" class="block p-2 hover:bg-green-700 rounded">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="flex-1 flex items-center justify-center px-4 py-6">
+    <div class="w-full max-w-4xl">
+      <h1 class="text-2xl font-bold text-green-700 text-center mb-4">ตารางการใช้ห้องเรียน</h1>
+
+      <form class="flex flex-col sm:flex-row sm:items-end gap-2 mb-4">
+        <div class="flex-1">
+          <label for="room" class="block text-gray-700">ห้องเรียน</label>
+          <select id="room" name="room" class="w-full p-1 border rounded">
+            <option value="">-- เลือกห้อง --</option>
+            <option value="B101">B101</option>
+            <option value="B102">B102</option>
+            <option value="B103">B103</option>
+          </select>
+        </div>
+        <div class="flex-1">
+          <label for="term" class="block text-gray-700">ภาคเรียน</label>
+          <select id="term" name="term" class="w-full p-1 border rounded">
+            <option value="1">1/2568</option>
+            <option value="2">2/2568</option>
+          </select>
+        </div>
+        <button type="submit" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">แสดง</button>
+      </form>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-center bg-white shadow-md rounded">
+          <thead class="bg-green-100 text-gray-800">
+            <tr>
+              <th class="p-1 border">วัน/เวลา</th>
+              <th class="p-1 border">08-09</th>
+              <th class="p-1 border">09-10</th>
+              <th class="p-1 border">10-11</th>
+              <th class="p-1 border">11-12</th>
+              <th class="p-1 border">13-14</th>
+              <th class="p-1 border">14-15</th>
+              <th class="p-1 border">15-16</th>
+              <th class="p-1 border">16-17</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-gray-50">
+              <td class="p-1 border bg-gray-50 font-semibold">จันทร์</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">GEN101</td><td class="p-1 border">GEN101</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">AGR202</td><td class="p-1 border">AGR202</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">ว่าง</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="p-1 border bg-gray-50 font-semibold">อังคาร</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">GEN102</td><td class="p-1 border">GEN102</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">ว่าง</td><td class="p-1 border">AGR203</td>
+              <td class="p-1 border">AGR203</td><td class="p-1 border">ว่าง</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="p-1 border bg-gray-50 font-semibold">พุธ</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">GEN103</td><td class="p-1 border">GEN103</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">AGR204</td><td class="p-1 border">AGR204</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">ว่าง</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="p-1 border bg-gray-50 font-semibold">พฤหัสบดี</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">GEN104</td><td class="p-1 border">GEN104</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">AGR205</td><td class="p-1 border">AGR205</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">ว่าง</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="p-1 border bg-gray-50 font-semibold">ศุกร์</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">GEN105</td><td class="p-1 border">GEN105</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">AGR206</td><td class="p-1 border">AGR206</td>
+              <td class="p-1 border">ว่าง</td><td class="p-1 border">ว่าง</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <section class="bg-white p-4 mt-4 rounded shadow">
+        <h2 class="text-lg font-semibold text-green-700 mb-2">ข้อปฏิบัติการใช้ห้องเรียน</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>เข้าใช้งานตามเวลาที่กำหนด</li>
+          <li>รักษาความสะอาดห้อง</li>
+          <li>ห้ามเคลื่อนย้ายอุปกรณ์โดยพลการ</li>
+          <li>ปิดเครื่องใช้ไฟฟ้าเมื่อเลิกใช้</li>
+          <li>แจ้งปัญหาให้เจ้าหน้าที่ทราบ</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <div class="bg-green-700 h-16 w-full"></div>
+
+  <script>
+    document.getElementById('menuButton').addEventListener('click', function() {
+      const menuItems = document.getElementById('menuItems');
+      menuItems.classList.toggle('hidden'); 
+      menuItems.classList.toggle('open'); 
+      this.classList.toggle('open'); 
+    });
+    document.addEventListener('click', function(event) {
+      const menuButton = document.getElementById('menuButton');
+      const menuItems = document.getElementById('menuItems');
+      if (!menuButton.contains(event.target) && !menuItems.contains(event.target) && menuItems.classList.contains('open')) {
+        menuItems.classList.add('hidden');
+        menuItems.classList.remove('open');
+        menuButton.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
