@@ -52,65 +52,88 @@
     @media (max-width: 639px) {
       .menu-items {
         position: absolute;
-        top: 4rem;
-        right: 0;
-        width: 100%;
+        top: 3.5rem;
+        right: 1;
+        width: max-content;
+        min-width: 160px;
         background-color: #166534;
         box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        padding: 0.5rem 0;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        display: none;
+        flex-direction: column;
       }
       .menu-items.open {
-        transform: translateX(0);
+        display: flex;
       }
     }
   </style>
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100 text-sm">
 
+  <!-- Header -->
   <header class="bg-gray-50 text-green-700 py-2 shadow">
-        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
 
-            <!-- ข้อความบรรทัดเดียว -->
-            <div class="flex items-center gap-2">
-                <!-- โลโก้ -->
-                <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1200px-MJU_LOGO.svg.png"
-                    alt="MJU Logo" class="w-24 h-auto">
+      <!-- ซ้าย: โลโก้ + ข้อความ -->
+      <div class="flex items-center gap-2">
+        <!-- โลโก้ -->
+        <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1200px-MJU_LOGO.svg.png"
+           alt="MJU Logo" class="w-24 h-auto">
 
-                <!-- ข้อความสองบรรทัด + เส้นแนวตั้ง -->
-                <div class="flex flex-col pr-2 border-r-2 border-gray-300">
-                    <span class="text-lg md:text-xl font-medium leading-snug">
-                        ระบบลงทะเบียน
-                    </span>
-                    <span class="text-lg md:text-xl font-medium leading-snug">
-                        มหาวิทยาลัยแม่โจ้
-                    </span>
-                </div>
-
-                <!-- รูปด้านหลังเส้น -->
-                <img src="/img/MJU university.png" alt="รูปหลังเส้น" class="w-24 h-auto rounded-md">
-            </div>
+        <!-- ข้อความ + เส้น -->
+        <div class="flex flex-col pr-2 border-r-2 border-gray-300">
+          <span class="text-lg md:text-xl font-medium leading-snug">
+            ระบบลงทะเบียน
+          </span>
+          <span class="text-lg md:text-xl font-medium leading-snug">
+            มหาวิทยาลัยแม่โจ้
+          </span>
         </div>
+
+        <!-- รูปด้านหลังเส้น -->
+        <img src="/img/MJU university.png" alt="รูปหลังเส้น" class="w-24 h-auto rounded-md">
+      </div>
+
+      <!-- ขวา: ปุ่ม Logout (เฉพาะเดสก์ท็อป) -->
+      <div class="hidden md:block">
+        <a href="index.html"
+           class="bg-green-700 hover:bg-red-600 text-white font-medium py-2 px-4 rounded transition duration-300 ease-in-out">
+          Logout
+        </a>
+      </div>
+    </div>
   </header>
 
-  <nav class="bg-green-700 p-4 relative shadow-md">
-    <div class="container mx-auto flex justify-end items-center">
-      <button class="hamburger sm:hidden" id="menuButton">
-        <div class="line1 bg-white"></div>
-        <div class="line2 bg-white"></div>
-        <div class="line3 bg-white"></div>
-      </button>
+<!-- Navigation -->
+<nav class="bg-green-700 relative shadow-md border-b border-green-300">
+  <div class="max-w-6xl mx-auto px-4 py-3">
 
-      <ul id="menuItems" class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 text-white menu-items">
-        <li><a href="index.html" class="block p-2 hover:bg-green-700 rounded">หน้าแรก</a></li>
-        <li><a href="StudentTimeTable.html" class="block p-2 hover:bg-green-700 rounded">ตารางเรียน</a></li>
-        <li><a href="ตารางใช้ห้อง.html" class="block p-2 hover:bg-green-700 rounded">ตารางการใช้ห้องเรียน</a></li>
-        <li><a href="reg-calender.html" class="block p-2 hover:bg-green-700 rounded">ปฏิทินการศึกษา</a></li>
-        <li><a href="index.html" class="block p-2 hover:bg-green-700 rounded">Logout</a></li>
-      </ul>
+    <!-- ปุ่ม toggle menu (มือถือ) -->
+    <div class="flex justify-end md:hidden">
+      <button id="menuButton" class="text-green-50 focus:outline-none" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
-  </nav>
+
+    <!-- เมนู -->
+    <div id="menuItems"
+         class="hidden md:flex md:flex-row md:justify-end gap-4 mt-4 md:mt-0 text-green-50 font-medium text-left
+                absolute top-full right-4 z-50 bg-green-700 shadow-lg rounded-md w-48 p-3
+                md:static md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:p-0">
+      <a href="index.html" class="block md:inline hover:underline py-1">หน้าแรก</a>
+      <a href="StudentTimeTable.html" class="block md:inline hover:underline py-1">ตารางเรียน</a>
+      <a href="ตารางใช้ห้อง.html" class="block md:inline hover:underline py-1">ตารางการใช้ห้องเรียน</a>
+      <a href="reg-calender.html" class="block md:inline hover:underline py-1">ปฏิทินการศึกษา</a>
+      <a href="index.html"
+         class="block md:hidden bg-red-50 hover:bg-red-600 text-green-700 font-medium py-2 px-4 rounded shadow text-center mt-2">
+         Logout
+      </a>
+    </div>
+  </div>
+</nav>
 
   <main class="flex-1 flex items-center justify-center px-4 py-6">
     <div class="w-full max-w-4xl">
