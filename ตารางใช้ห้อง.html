@@ -69,16 +69,30 @@
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100 text-sm">
 
-  <div class="bg-green-700 h-16 w-full flex items-center justify-center p-4">
-    <div class="flex items-center space-x-2">
-      <img src="/img/MJU_LOGO.svg.png" alt="Maejo University Logo" class="h-10 w-auto">
-      <div class="text-white text-lg font-bold flex items-center">
-        <span class="mr-2">ระบบลงทะเบียน</span>
-        <span>มหาวิทยาลัยแม่โจ้</span>
-      </div>
-    </div>
-    <img src="/img/MJU university.png" alt="MJU Logo" class="h-10 w-auto ml-auto hidden sm:block">
-  </div>
+  <header class="bg-gray-50 text-green-700 py-2 shadow">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+
+            <!-- ข้อความบรรทัดเดียว -->
+            <div class="flex items-center gap-2">
+                <!-- โลโก้ -->
+                <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1200px-MJU_LOGO.svg.png"
+                    alt="MJU Logo" class="w-24 h-auto">
+
+                <!-- ข้อความสองบรรทัด + เส้นแนวตั้ง -->
+                <div class="flex flex-col pr-2 border-r-2 border-gray-300">
+                    <span class="text-lg md:text-xl font-medium leading-snug">
+                        ระบบลงทะเบียน
+                    </span>
+                    <span class="text-lg md:text-xl font-medium leading-snug">
+                        มหาวิทยาลัยแม่โจ้
+                    </span>
+                </div>
+
+                <!-- รูปด้านหลังเส้น -->
+                <img src="/img/MJU university.png" alt="รูปหลังเส้น" class="w-24 h-auto rounded-md">
+            </div>
+        </div>
+  </header>
 
   <nav class="bg-green-600 p-4 relative shadow-md">
     <div class="container mx-auto flex justify-end items-center">
