@@ -6,14 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>เข้าสู่ระบบอาจารย์</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/img/MJU university.png" />
-  <style>
-    body {
-      font-family: 'Kanit', sans-serif;
-      background: #e6f4ea; /* สีเขียวอ่อนนุ่ม */
-    }
-  </style>
+
+      <!-- ใช้ฟอนต์ K2D -->
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+            @apply font-k2d;
+            }
+        }
+
+        @layer utilities {
+            .font-k2d {
+            font-family: 'K2D', sans-serif;
+            }
+        }
+    </style>
+    
 </head>
 
 <body class="min-h-screen flex items-center justify-center px-6 py-12">
