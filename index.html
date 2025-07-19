@@ -11,48 +11,55 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-  <!-- Header -->
-<header class="bg-whiat-700 text-black shadow-md">
+<!-- Header -->
+<header class="bg-green-700 text-white shadow-md">
   <div class="container mx-auto flex items-center justify-between py-4 px-6">
-    <!-- เปลี่ยนจากข้อความเป็นโลโก้รูปภาพ -->
-    <a href="#home" class="flex items-center space-x-2" >
-      <img src="/img/MJU_LOGO.svg.png" alt="MJU Logo" class="h-20 z-20 w-auto mr-3">
-        <div class="flex items-center">
-  <!-- ข้อความด้านซ้าย -->
-  <div class="pr-4">
-    <span class="text-2xl font-normal">มหาวิทยาลัยแม่โจ้</span><br>
-    <span class="block text-xl font-normal">MAEJO UNIVERSITY</span>
-  </div>
-  
-  <!-- เส้นแบ่งหนา และเว้นระยะ -->
-  <div class="border-l-4 border-whiat-700 h-16 mx-2"></div>
-  
-  <!-- ข้อความ MJU -->
-  <span class="text-5xl font-normal"><img src="/img/MJU university.png" alt="" class=" h-20 z-20 w-auto mr-3"></span>
-</div>
-
-
+    <!-- โลโก้ -->
+    <a href="#home" class="flex items-center space-x-2">
+      <img src="/img/MJU_LOGO.svg.png" alt="MJU Logo" class="h-16 w-auto">
+      <div>
+        <span class="text-xl block">มหาวิทยาลัยแม่โจ้</span>
+        <span class="text-sm block">MAEJO UNIVERSITY</span>
+      </div>
     </a>
+
+    <!-- Hamburger -->
+    <button id="menu-toggle" class="md:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
+    <!-- เมนูหลัก (จอใหญ่) -->
+    <nav class="hidden md:flex space-x-6 text-sm md:text-base">
+      <a href="#home" class="px-3 py-2 hover:bg-green-800 rounded">หน้าแรก</a>
+      <a href="https://pr.mju.ac.th/" target="_blank" class="px-3 py-2 hover:bg-green-800 rounded">ข่าวสาร</a>
+      <a href="#schedule" class="px-3 py-2 hover:bg-green-800 rounded">ตารางเรียน</a>
+      <a href="#rooms" class="px-3 py-2 hover:bg-green-800 rounded">ตารางห้อง</a>
+      <a href="#calendar" class="px-3 py-2 hover:bg-green-800 rounded">ปฏิทิน</a>
+      <a href="SelectLogin.html" class="px-3 py-2 hover:bg-green-800 rounded">เข้าสู่ระบบ</a>
+    </nav>
+  </div>
+
+  <!-- เมนูมือถือ -->
+  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
+    <a href="#home" class="block px-4 py-2 hover:bg-green-800 rounded">หน้าแรก</a>
+    <a href="https://pr.mju.ac.th/" target="_blank" class="block px-4 py-2 hover:bg-green-800 rounded">ข่าวสาร</a>
+    <a href="#schedule" class="block px-4 py-2 hover:bg-green-800 rounded">ตารางเรียน</a>
+    <a href="#rooms" class="block px-4 py-2 hover:bg-green-800 rounded">ตารางห้อง</a>
+    <a href="#calendar" class="block px-4 py-2 hover:bg-green-800 rounded">ปฏิทิน</a>
+    <a href="SelectLogin.html" class="block px-4 py-2 hover:bg-green-800 rounded">เข้าสู่ระบบ</a>
   </div>
 </header>
-<div class="bg-green-700">
-    <div class="container mx-auto flex space-x-20 px-6 py-2 flex justify-center ">
-      <a href="#home" class="text-white px-4 py-1 hover:bg-green-800 rounded">หน้าแรก</a>
-      <a href="#schedule" class="text-white px-4 py-1 hover:bg-green-800 rounded">ตารางเรียน</a>
-      <a href="#rooms" class="text-white px-4 py-1 hover:bg-green-800 rounded">ตารางการใช้ห้อง</a>
-      <a href="#calendar" class="text-white px-4 py-1 hover:bg-green-800 rounded">ปฏิทินการศึกษา</a>
-      <a href="SelectLogin.html" class="text-white px-4 py-1 hover:bg-green-800 rounded">เข้าสู่ระบบ</a>
-    </div>
-  </div>
- 
 
+</header>
 
  <!-- Hero Section -->
 <section id="home" class="bg-white py-20">
   <div class="container mx-auto text-center px-4">
     <h2 class="text-4xl font-bold mb-4">ยินดีต้อนรับสู่เว็บไซต์ของมหาวิทยาลัย</h2>
-    <p class="text-lg mb-6">เลือกเมนูด้านบนเพื่อเข้าดูข่าวสารและข้อมูลที่เกี่ยวข้อง</p>
-    <a href="#news" class="bg-blue-700 text-white px-6 py-2 rounded-full hover:bg-blue-800 transition">ดูข่าวล่าสุด</a>
+
   </div>
 </section>
 
@@ -95,9 +102,16 @@
 
 
   <!-- Footer -->
-  <footer class="bg-blue-700 text-white text-center p-4 mt-10">
+  <footer class="bg-green-600 text-white text-center p-4 mt-10">
     <p>&copy; 2025 มหาวิทยาลัยของฉัน. สงวนลิขสิทธิ์.</p>
   </footer>
+  <script>
+    const toggleButton = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
 
+    toggleButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
