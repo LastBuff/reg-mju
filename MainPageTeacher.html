@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html lang="th">
+
+<link href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>หน้าหลักอาจารย์</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style type="text/tailwindcss">
+        @layer base {
+      body {
+        @apply font-k2d;
+      }
+    }
+
+    @layer utilities {
+      .font-k2d {
+        font-family: 'K2D', sans-serif;
+      }
+    }
+  </style>
 </head>
 <body class="bg-green-200 min-h-screen flex flex-col">
 
   <!-- Header -->
-  <header class="bg-green-800 text-white py-6 shadow">
-    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
-      <div class="flex items-center">
-        <span class="text-lg md:text-xl font-medium">
-          ยินดีต้อนรับ, อาจารย์ – 
-          <span class="text-green-100 text-sm md:text-base font-normal">Maejo University</span>
-        </span>
-      </div>
-      <div class="hidden md:block">
-        <a href="index.html" class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded shadow">
-          Logout
-        </a>
-      </div>
-    </div>
-  </header>
+  <header class="bg-gray-50 text-green-700 py-2 shadow">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+
+            <!-- ข้อความบรรทัดเดียว -->
+            <div class="flex items-center gap-2">
+                <!-- โลโก้ -->
+                <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1200px-MJU_LOGO.svg.png"
+                    alt="MJU Logo" class="w-24 h-auto">
+
+                <!-- ข้อความสองบรรทัด + เส้นแนวตั้ง -->
+                <div class="flex flex-col pr-2 border-r-2 border-gray-300">
+                    <span class="text-lg md:text-xl font-medium leading-snug">
+                        ระบบลงทะเบียน
+                    </span>
+                    <span class="text-lg md:text-xl font-medium leading-snug">
+                        มหาวิทยาลัยแม่โจ้
+                    </span>
+                </div>
+
+                <!-- รูปด้านหลังเส้น -->
+                <img src="/img/MJU university.png" alt="รูปหลังเส้น" class="w-24 h-auto rounded-md">
+            </div>
+
+            <!-- ปุ่มออกจากระบบ (เดสก์ท็อปเท่านั้น) -->
+            <div class="hidden md:block">
+                <a href="index.html"
+                    class="bg-green-700 hover:bg-red-600 text-white font-medium py-2 px-4 rounded transition duration-300 ease-in-out">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </header>
 
   <!-- Navigation -->
-  <nav class="bg-green-100 border-b border-green-300 relative">
+  <nav class="bg-green-700 border-b border-green-300 relative">
     <div class="max-w-6xl mx-auto px-4 py-3">
       <div class="flex justify-end md:hidden">
-        <button id="menuToggle" class="text-green-800 focus:outline-none" aria-label="Toggle menu">
+        <button id="menuToggle" class="text-green-50 focus:outline-none" aria-label="Toggle menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
       <div id="menuContent"
-           class="hidden md:flex md:flex-row md:justify-end gap-4 mt-4 md:mt-0 text-green-800 font-medium text-left
-                  absolute top-full right-4 z-50 bg-white shadow-lg rounded-md w-48 p-3
+           class="hidden md:flex md:flex-row md:justify-end gap-4 mt-4 md:mt-0 text-green-50 font-medium text-left
+                  absolute top-full right-4 z-50 bg-green-700 shadow-lg rounded-md w-48 p-3
                   md:static md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:p-0">
         <a href="index.html" class="block md:inline hover:underline py-1">หน้าแรก</a>
         <a href="TeachersSchedule.html" class="block md:inline hover:underline py-1">ตารางสอน</a>
         <a href="grade.html" class="block md:inline hover:underline py-1">บันทึกเกรดรายบุคคล</a>
         <a href="https://pr.mju.ac.th/" target="_blank" class="block md:inline hover:underline py-1">ข่าวสาร</a>
-        <a href="index.html"class="block md:hidden bg-red-500 hover:bg-red-600 text-white
+        <a href="index.html"class="block md:hidden bg-red-50 hover:bg-red-600 text-green-700
          font-medium py-2 px-4 rounded shadow text-center mt-2">
          Logout
         </a>
@@ -90,7 +124,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-green-800 text-white text-center py-4">
+  <footer class="bg-green-700 text-white text-center py-4">
     <p>© 2025 มหาวิทยาลัยแม่โจ้ | Maejo University. สู่ความยั่งยืนด้วยเกษตรธรรมชาติ</p>
   </footer>
 
