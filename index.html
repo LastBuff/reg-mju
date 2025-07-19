@@ -12,49 +12,57 @@
 <body class="bg-gray-50 text-gray-800">
 
 <!-- Header -->
-<header class="bg-green-700 text-white shadow-md">
-  <div class="container mx-auto flex items-center justify-between py-4 px-6">
-    <!-- โลโก้ -->
-    <a href="#home" class="flex items-center space-x-2">
-      <img src="/img/MJU_LOGO.svg.png" alt="MJU Logo" class="h-16 w-auto">
-      <div>
-        <span class="text-xl block">มหาวิทยาลัยแม่โจ้</span>
-        <span class="text-sm block">MAEJO UNIVERSITY</span>
+  <header class="bg-gray-50 text-green-700 py-2 shadow">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+
+            <!-- ข้อความบรรทัดเดียว -->
+            <div class="flex items-center gap-2">
+                <!-- โลโก้ -->
+                <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1200px-MJU_LOGO.svg.png"
+                    alt="MJU Logo" class="w-24 h-auto">
+
+                <!-- ข้อความสองบรรทัด + เส้นแนวตั้ง -->
+                <div class="flex flex-col pr-2 border-r-2 border-gray-300">
+                    <span class="text-lg md:text-xl font-medium leading-snug">
+                        ระบบลงทะเบียน
+                    </span>
+                    <span class="text-lg md:text-xl font-medium leading-snug">
+                        มหาวิทยาลัยแม่โจ้
+                    </span>
+                </div>
+
+                <!-- รูปด้านหลังเส้น -->
+                <img src="/img/MJU university.png" alt="รูปหลังเส้น" class="w-24 h-auto rounded-md">
+            </div>
+        </div>
+  </header>
+<!-- Navigation -->
+  <nav class="bg-green-700 border-b border-green-300 relative">
+    <div class="max-w-6xl mx-auto px-4 py-3">
+
+      <!-- ปุ่ม toggle menu (มือถือ) -->
+      <div class="flex justify-end md:hidden">
+        <button id="menuToggle" class="text-green-50 focus:outline-none" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
-    </a>
 
-    <!-- Hamburger -->
-    <button id="menu-toggle" class="md:hidden focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+      <!-- เมนู -->
+      <div id="menuContent"
+           class="hidden md:flex md:flex-row md:justify-end gap-4 mt-4 md:mt-0 text-green-50 font-medium text-left
+                  absolute top-full right-4 z-50 bg-green-700 shadow-lg rounded-md w-48 p-3
+                  md:static md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:p-0">
+        <a href="i.html" class="block md:inline hover:underline py-1">หน้าแรก</a>
+        <a href="https://pr.mju.ac.th/" target="_blank" class="block md:inline hover:underline py-1">ข่าวสาร</a>
+        <a href="https://library.mju.ac.th/2022/" target="_blank" class="block md:inline hover:underline py-1">ระบบ Library</a>
+        <a href="https://www.mju.ac.th/th/Contact.html" target="_blank" class="block md:inline hover:underline py-1">ติดต่อสอบถาม</a>
+        <a href="reg-calender.html" class="block md:inline hover:underline py-1">เข้าสู่ระบบ</a>
+      </div>
 
-    <!-- เมนูหลัก (จอใหญ่) -->
-    <nav class="hidden md:flex space-x-6 text-sm md:text-base">
-      <a href="#home" class="px-3 py-2 hover:bg-green-800 rounded">หน้าแรก</a>
-      <a href="https://pr.mju.ac.th/" target="_blank" class="px-3 py-2 hover:bg-green-800 rounded">ข่าวสาร</a>
-      <a href="#schedule" class="px-3 py-2 hover:bg-green-800 rounded">ตารางเรียน</a>
-      <a href="#rooms" class="px-3 py-2 hover:bg-green-800 rounded">ตารางห้อง</a>
-      <a href="#calendar" class="px-3 py-2 hover:bg-green-800 rounded">ปฏิทิน</a>
-      <a href="SelectLogin.html" class="px-3 py-2 hover:bg-green-800 rounded">เข้าสู่ระบบ</a>
-    </nav>
-  </div>
-
-  <!-- เมนูมือถือ -->
-  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
-    <a href="#home" class="block px-4 py-2 hover:bg-green-800 rounded">หน้าแรก</a>
-    <a href="https://pr.mju.ac.th/" target="_blank" class="block px-4 py-2 hover:bg-green-800 rounded">ข่าวสาร</a>
-    <a href="#schedule" class="block px-4 py-2 hover:bg-green-800 rounded">ตารางเรียน</a>
-    <a href="#rooms" class="block px-4 py-2 hover:bg-green-800 rounded">ตารางห้อง</a>
-    <a href="#calendar" class="block px-4 py-2 hover:bg-green-800 rounded">ปฏิทิน</a>
-    <a href="SelectLogin.html" class="block px-4 py-2 hover:bg-green-800 rounded">เข้าสู่ระบบ</a>
-  </div>
-</header>
-
-</header>
-
+    </div>
+  </nav>
  <!-- Hero Section -->
 <section id="home" class="bg-white py-20">
   <div class="container mx-auto text-center px-4">
@@ -113,5 +121,14 @@
       mobileMenu.classList.toggle('hidden');
     });
   </script>
+
+    <script>
+    const toggleBtn = document.getElementById('menuToggle');
+    const menu = document.getElementById('menuContent');
+    toggleBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+
 </body>
 </html>
